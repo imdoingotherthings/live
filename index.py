@@ -10,6 +10,7 @@ def hello_world():
 @app.route('/lol')
 def main():
     response = requests.get('https://watch.lolesports.com/schedule?leagues=all-star,lcs,lec,lck,lpl,lcs-academy,turkiye-sampiyonluk-ligi,cblol-brazil,lla,oce-opl,ljl-japan,worlds,msi,rift-rivals-na-eu,rift-rivals-kr-cn-lms-vn,league-of-legends-college-championship,european-masters')
-    soup = BeautifulSoup(response.content, 'html.parser')
+    response.encoding = 'utf-8'
+    soup = BeautifulSoup(response.text, "html.parser")
     print(soup.prettify())
     return ''
